@@ -1,0 +1,23 @@
+
+{{#each questions}}
+<h4 id={{id}}>{{text}}</h4>
+  <div class="field">
+    <div class="control">
+      <label class="radio">
+        <input type="radio" name={{id}} value='1'> 1
+      </label>
+      <label class="radio">
+        <input type="radio" name={{id}} value='2'> 2
+      </label>
+      <label class="radio">
+        <input type="radio" name={{id}} value='3'> 3
+      </label>
+      <label class="radio">
+        <input type="radio" name={{id}} value='4'> 4
+      </label>
+      <label class="radio">
+        <input type="radio" name={{id}} value='5'> 5
+      </label>
+    </div>
+  </div>
+  {{/each}}

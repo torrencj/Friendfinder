@@ -9,7 +9,17 @@
     <link rel="stylesheet" href="style/master.css">
   </head>
   <body>
-    <main >
+    <div class="modal">
+      <div class="modal-background"></div>
+      <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Meet your new best friend!</p>
+      </header>
+    </div>
+      <button class="modal-close is-large" aria-label="close"></button>
+    </div>
+
+    <main>
       <section class="hero big-image" id="hero">
         <div class="container">
         <div class="hero-body">
@@ -22,9 +32,6 @@
           </div>
         </div>
 
-      <!-- </section>
-
-      <section class="transbackground"> -->
       <div class="container" id="teaser">
         <div class="columns has-text-black">
           <div class="column transbackground">
@@ -48,12 +55,35 @@
         <div class="is-vcentered">
           <div class="columns">
             <div class="column is-one-third is-offset-one-third">
-              <a class="button is-primary is-inverted is-outlined" style="width:100%">Get Started</a>
+              <a class="button is-primary is-inverted is-outlined" id="start-btn" style="width:100%">Get Started</a>
             </div>
           </div>
         </div>
       </section>
+
+      <section id="quiz" class="hidden" style="margin:24px;">
+        <div class="container">
+
+      		<h2>Survey Questions</h2>
+      		<hr>
+          <form class="" action="/api/friend" method="post">
+            {{{body}}}
+
+            <div class="field">
+              <div class="control">
+                <button class="button is-primary" id="submit-btn">Submit</button>
+              </div>
+            </div>
+          </form>
+     </div>
+      </section>
+
+      <section id="results">
+
+      </section>
+
     </main>
+
     <footer class="footer">
       <div class="container">
         <div class="content has-text-centered">
@@ -64,6 +94,16 @@
         </div>
       </div>
     </footer>
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+
+    <script id="modal-template" type="text/x-handlebars-template">
+      <p>{{name}}</p>
+    </script>
 
   </body>
 </html>

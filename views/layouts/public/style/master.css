@@ -11,7 +11,7 @@ main {
 
 #hero{
   min-height: 90vh;
-  background-image: url(friends-hero.jpg);
+  background-image: url(../img/friends-hero.jpg);
 }
 
 .big-image {
@@ -26,7 +26,7 @@ main {
 }
 
 #get-started {
-  /*min-height:90vh;*/
+  padding: 100px;
   background: rgb(40, 86, 160)
 
 }
@@ -55,4 +55,13 @@ main {
 
 .button.is-primary.is-inverted.is-outlined:hover {
   color: rgb(40, 86, 160);
+}
+
+.button.is-primary {
+  background-color: rgb(40, 86, 160);
+}
+
+/*Utility classes*/
+.hidden {
+  display: none !important;
 }

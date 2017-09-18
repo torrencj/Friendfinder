@@ -1,6 +1,7 @@
 // Dependencies
 var express = require("express");
 var exphbs = require("express-handlebars");
+var bodyParser = require('body-parser');
 
 // Create an instance of the express app.
 var app = express();
@@ -14,14 +15,25 @@ app.engine("handlebars", exphbs({
 }));
 app.set("view engine", "handlebars");
 
+app.use(express.static('views/layouts/public'))
+app.use(bodyParser.urlencoded({ extended: true }));
+
+
 //Helper Functions
+const random = function(num){
+  return Math.floor(Math.random()*num);
+}
+
 const RandomScores = function() {
   var result = []
   for (var i = 0; i < 10; i++) {
-    result.push(Math.floor(Math.random()*5) + 1)
+    result.push(random(5) + 1)
   }
   return result;
 }
+
+
+
 
 //Data
 var questions = [
@@ -38,29 +50,27 @@ var questions = [
 ];
 
 var friends = [
-  {name: "Candyman", photoURL: "app/public/img/candyman.jpg", scores: new RandomScores},
-  {name: "Chrome Skull", photoURL: "app/public/img/chrome-skull.jpg", scores: new RandomScores},
-  {name: "Chucky", photoURL: "app/public/img/chucky.jpg", scores: new RandomScores},
-  {name: "Freddy", photoURL: "app/public/img/freddy.jpg", scores: new RandomScores},
-  {name: "Herbert West", photoURL: "app/public/img/herbert-west.jpg", scores: new RandomScores},
-  {name: "Jason", photoURL: "app/public/img/jason.jpg", scores: new RandomScores},
-  {name: "Jigsaw", photoURL: "app/public/img/jigsaw.jpg", scores: new RandomScores},
-  {name: "Patrick Bateman", photoURL: "app/public/img/patrick-bateman.jpg", scores: new RandomScores},
-  {name: "Pinhead", photoURL: "app/public/img/pinhead.jpg", scores: new RandomScores},
-  {name: "Skeletor", photoURL: "app/public/img/skeletor.jpg", scores: new RandomScores},
-  {name: "The Donald", photoURL: "app/public/img/trump.jpg", scores: new RandomScores}
+  {name: "Candyman", photoURL: "candyman.jpg", scores: new RandomScores},
+  {name: "Chrome Skull", photoURL: "chrome-skull.jpg", scores: new RandomScores},
+  {name: "Chucky", photoURL: "chucky.jpg", scores: new RandomScores},
+  {name: "Freddy", photoURL: "freddy.jpg", scores: new RandomScores},
+  {name: "Herbert West", photoURL: "herbert-west.jpg", scores: new RandomScores},
+  {name: "Jason", photoURL: "jason.jpg", scores: new RandomScores},
+  {name: "Jigsaw", photoURL: "jigsaw.jpg", scores: new RandomScores},
+  {name: "Patrick Bateman", photoURL: "patrick-bateman.jpg", scores: new RandomScores},
+  {name: "Pinhead", photoURL: "pinhead.jpg", scores: new RandomScores},
+  {name: "Skeletor", photoURL: "skeletor.png", scores: new RandomScores},
+  {name: "The Donald", photoURL: "trump.jpg", scores: new RandomScores}
 ];
 
-
-// HTML Routes
+// Routes
 app.get("/", function(req, res) {
-  res.render("index");
+  res.render("quiz", {questions});
 });
 
-// API routes
-app.get("/:name", function(req, res) {
-  // res.render("index", lunches[0]);
-});
+app.post("/api/friend", function(req,res) {
+  res.send(friends[random(10)]);
+})
 
 
 // Initiate the listener.
