@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 var app = express();
 
 // Specify the port.
-var port = 8000;
+var port = process.env.port || 8000;
 
 // Set Handlebars as the default templating engine.
 app.engine("handlebars", exphbs({
