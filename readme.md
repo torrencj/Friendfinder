@@ -5,4 +5,4 @@ The *ONLY* accurate and fast method for determining your new best friend. Don't 
 
 ---
 
-Get started today. You won't regret it.
+[Get started today.](https://arcane-oasis-58641.herokuapp.com/) You won't regret it.
